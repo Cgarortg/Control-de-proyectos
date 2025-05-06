@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -18,7 +19,10 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'nombre',
+        'appellidos',
+        'telefono',
+        'tipo',
         'email',
         'password',
     ];
@@ -32,6 +36,21 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+
+    public static function crear(array $data): User
+    {
+    
+        $data['tipo'] = $data['tipo'] ?? 'NORMAL';    
+        return self::create([
+            'nombre' => $data['nombre'],
+            'appellidos' => $data['apellidos'],
+            'telefono' => $data['telefono'],
+            'tipo' => $data['tipo'], 
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+    }
 
     /**
      * Get the attributes that should be cast.
