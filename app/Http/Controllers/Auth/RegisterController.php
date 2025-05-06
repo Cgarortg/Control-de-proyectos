@@ -83,5 +83,9 @@ class RegisterController extends Controller
     {
         return User::crear($data);
     }
+    protected function redirectTo() {
+        $rol = auth()->user()->tipo;
+        return config('global.'.$rol);
+    }
 
 }

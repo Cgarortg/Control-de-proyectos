@@ -12,3 +12,4 @@ Route::get(config('global.ADMINISTRADOR'), [App\Http\Controllers\HomeController:
 Route::get(config('global.ROOT'), [App\Http\Controllers\HomeController::class, 'inicioRoot'])->name('inicioRoot');
 
 
+Route::get('/test', [App\Http\Controllers\HomeController::class, 'test'])->name('test');

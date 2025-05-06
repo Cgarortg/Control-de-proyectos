@@ -20,7 +20,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'nombre',
-        'appellidos',
+        'apellidos',
         'telefono',
         'tipo',
         'email',
@@ -40,11 +40,11 @@ class User extends Authenticatable
 
     public static function crear(array $data): User
     {
-    
-        $data['tipo'] = $data['tipo'] ?? 'NORMAL';    
+
+        $data['tipo'] = $data['tipo'] ?? 'NORMAL';
         return self::create([
             'nombre' => $data['nombre'],
-            'appellidos' => $data['apellidos'],
+            'apellidos' => $data['apellidos'],
             'telefono' => $data['telefono'],
             'tipo' => $data['tipo'], 
             'email' => $data['email'],
@@ -63,5 +63,12 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function nombreCompleto(){
+        return $this->nombre.' '.$this->apellidos;
+    }
+    public function miembroDesde(){
+        return 'Miembro desde '. $this->created_at->format('m/Y');;
     }
 }

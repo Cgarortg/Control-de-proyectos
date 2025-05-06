@@ -19,6 +19,10 @@ class HomeController extends Controller
         $this->middleware('root')->only('inicioRoot');
     }
 
+    public function test(){
+        
+        return view('layouts.plantilla');
+    }
     
     public function inicio()
     {
@@ -34,4 +38,4 @@ class HomeController extends Controller
     public function inicioRoot(){
         return view('root.index');
     }
-}
+} 
