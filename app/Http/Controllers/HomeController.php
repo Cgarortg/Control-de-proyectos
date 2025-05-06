@@ -17,7 +17,6 @@ class HomeController extends Controller
         $this->middleware('normal')->only('inicioUser');
         $this->middleware('admin')->only('inicioAdmin');
         $this->middleware('root')->only('inicioRoot');
-
     }
 
     

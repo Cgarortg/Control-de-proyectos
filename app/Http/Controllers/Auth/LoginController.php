@@ -40,8 +40,6 @@ class LoginController extends Controller
 
     protected function redirectTo() {
         $rol = auth()->user()->tipo;
-       
         return config('global.'.$rol);
-        
     }
 }

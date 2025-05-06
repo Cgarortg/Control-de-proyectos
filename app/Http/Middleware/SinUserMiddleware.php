@@ -16,7 +16,6 @@ class SinUserMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $rol = auth()->user()->tipo ?? 'SINUSER';
-       
         if($rol == 'SINUSER'){
             return $next($request);
         }
